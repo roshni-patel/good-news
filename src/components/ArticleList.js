@@ -13,7 +13,6 @@ const ArticleList = (props) => {
             const apiArticles = response.data 
             console.log(apiArticles)
             setLatestArticles(apiArticles)
-            // console.log(apiArticles)
         })
         .catch((error) => {
             setErrorMessage(error);

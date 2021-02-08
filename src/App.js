@@ -23,32 +23,47 @@ import firebase from 'firebase';
 
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
+import SavedArticleList from './components/SavedArticleList';
 // firebase.initializeApp(firebaseConfig);
 
 function App() {
   const [savedArticles, setSavedArticles] = useState([]); 
   const [isSaved, setIsSaved] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(false); 
-  const [currentUser, setCurrentUser] = useState({id: "pBmcWZixbjllgC3iTxY4", name: "test user", email: "test@email.com"}); // maybe better to say user since want to display the name? store the user id
+  const [currentUser, setCurrentUser] = useState({id: "pBmcWZixbjllgC3iTxY4", name: "test user", email: "test@email.com"}); 
   const BASE_URL = "http://localhost:5000"
 
+  
 
 
-  const unsaveArticle = (userId, articleId) => {
-    const updatedArticles = savedArticles.filter((article) => {
-      return article.id !== articleId;
-    });
+  // const saveArticle = (userId, articleId) => {
+  //   // but we probably need to pass in the article as the second arg? 
+  //   axios.post(`${BASE_URL}/users/${userId}/articles/${articleId}`)
+  //     .then((response) => {
+  //       const updatedArticles = [...savedArticles, response.data]
+  //       setSavedArticles(updatedArticles)
+  //       setIsSaved(true)
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error)
+  //     })
+  // };
 
-    axios.delete(`${BASE_URL}/users/${userId}/articles/${articleId}`)
-      .then((response) => {
-        setSavedArticles(updatedArticles);
-        setIsSaved(false)
-        setErrorMessage('');
-      })
-      .catch((error) => {
-        setErrorMessage(error)
-      })
-  };
+  // const unsaveArticle = (userId, articleId) => {
+  //   const updatedArticles = savedArticles.filter((article) => {
+  //     return article.id !== articleId;
+  //   });
+
+  //   axios.delete(`${BASE_URL}/users/${userId}/articles/${articleId}`)
+  //     .then((response) => {
+  //       setSavedArticles(updatedArticles);
+  //       setIsSaved(false)
+  //       setErrorMessage('');
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error)
+  //     })
+  // };
 
   const logOut = () => {
     firebase.auth().signOut(); 
@@ -105,6 +120,9 @@ function App() {
           </Route>
           <Route path="/profile">
             <Profile />
+          </Route>
+          <Route path="/saved">
+            <SavedArticleList baseUrl={BASE_URL} user={currentUser} />
           </Route>
           <Route path="/">
             <ArticleList baseUrl={BASE_URL} user={currentUser}/>

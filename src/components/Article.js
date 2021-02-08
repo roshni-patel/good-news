@@ -20,9 +20,9 @@ const Article = (props) => {
     // };
     const [value, setValue] = useState('');
     const [copied, setCopied] = useState(false); 
+    const [errorMessage, setErrorMessage] = useState('')
 
     const saveArticle = (userId, articleId) => {
-        // but we probably need to pass in the article as the second arg? 
         axios.post(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
             // const updatedArticles = [...savedArticles, response.data]
@@ -30,9 +30,10 @@ const Article = (props) => {
             // setIsSaved(true)
         })
             .catch((error) => {
-            // setErrorMessage(error)
+            setErrorMessage(error)
         })
     };
+
     return (
         <div className="card">
         <img src={props.image_url} class="card-img-top" alt="news"/>
