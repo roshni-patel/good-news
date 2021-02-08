@@ -13,7 +13,9 @@ const ArticleList = (props) => {
             source_name={article.source_name}
             publication_date={article.publication_date}
             image_url={article.image_url}
-            sentiment={article.sentiment} />
+            sentiment={article.sentiment} 
+            // saveArticle={article.saveArticle}
+            />
         )
     })
     console.log(articleComponents)

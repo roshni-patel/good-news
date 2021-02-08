@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,80 +10,29 @@ import axios from 'axios';
 // import Home from './components/Home'; 
 import Profile from './components/Profile'; 
 import Login from './components/Login'; 
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
+import PasswordReset from "./components/PasswordReset";
+import { UserContext } from "./providers/UserProvider";
+
 // import Logout from './components/Logout';
 import ArticleList from './components/ArticleList';
 import firebaseConfig from './fire'; 
 import firebase from 'firebase';
+// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
-firebase.initializeApp(firebaseConfig);
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-    console.log(user.displayName)
-  } else {
-    // No user is signed in.
-    console.log("no user")
-  }
-});
+// firebase.initializeApp(firebaseConfig);
 
 function App() {
-  //  if they're logged in, we want to have an option to logout and go to their profile
-  // otherwise we just want a login button 
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-  // also need to think about how often articles are refreshed -- maybe once or twice a day?
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [latestArticles, setLatestArticles] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [user, setUser] = useState(''); //
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [emailError, setEmailError] = useState('');
-  // const [passwordError, setPasswordError] = useState(''); 
-  // const [hasAccount, setHasAccount] = useState(false); 
+  const [savedArticles, setSavedArticles] = useState([]); 
+  const [isSaved, setIsSaved] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
-  var uiConfig = {
-    callbacks: {
-      signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-        // User successfully signed in.
-        // Return type determines whether we continue the redirect automatically
-        // or whether we leave that to developer to handle.
-        return false;
-      },
-      uiShown: function() {
-        // The widget is rendered.
-        // Hide the loader.
-        // document.getElementById('loader').style.display = 'none';
-      }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    ],
-  };
-
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
-    ui.start('#firebaseui-auth-container', uiConfig);
-  })
-
-  firebase.auth().signOut().then(() => {
-    // Sign-out successful.
-  }).catch((error) => {
-    // An error happened.
-  });
-  
-// let currentDate = new Date().toISOString() // resulted in basically an infintie loop
-
-
-
-
-
-
+  const BASE_URL = "http://localhost:5000"
 
   useEffect(() => {
     axios.get("http://localhost:5000/articles")
@@ -100,17 +49,50 @@ function App() {
   }, []);
 
 
-    
+  // const saveArticle = (userId, articleId) => {
+  //   // but we probably need to pass in the article as the second arg? 
+  //   axios.post(`${BASE_URL}/users/${userId}/articles/${articleId}`)
+  //     .then((response) => {
+  //       const updatedArticles = [...savedArticles, response.data]
+  //       setSavedArticles(updatedArticles)
+  //       setIsSaved(true)
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error)
+  //     })
+  // };
 
+  // const unsaveArticle = (userId, articleId) => {
+  //   const updatedArticles = savedArticles.filter((article) => {
+  //     return article.id !== articleId;
+  //   });
 
+  //   axios.delete(`${BASE_URL}/users/${userId}/articles/${articleId}`)
+  //     .then((response) => {
+  //       setSavedArticles(updatedArticles);
+  //       setIsSaved(false)
+  //       setErrorMessage('');
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error)
+  //     })
+  // };
 
+  const logOut = () => {
+    firebase.auth().signOut(); 
+  }
 
-
-
+  // TODO 
+  // Logging out, needs to be an option on all pages
+  // Showing based on state the login/logout buttons 
+  // How to get google user documents 
+  // How to change info about the user to have this info - saved articles, filtered articles, time preference, etc. 
 
   // console.log(latestArticles)
 // for profile could pass a saved articles prop
-
+  const user = useContext(UserContext);
+  console.log(user)
+  
   return (
     <div className="container">
     <Router>
@@ -139,13 +121,21 @@ function App() {
               <Logout />
             ) : ( null 
             )} */}
-            <Login  />
+            <SignIn />
+            <SignUp />
+            <PasswordReset />
+            <Route path="signUp">
+              <SignUp />
+            </Route>
+            <Route path="passwordReset">
+              <PasswordReset />
+            </Route>
           </Route>
           <Route path="/profile">
             <Profile />
           </Route>
           <Route path="/">
-            <ArticleList articles={latestArticles}/>
+            <ArticleList articles={latestArticles} />
           </Route>
         </Switch>
       </div>
