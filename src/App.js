@@ -27,43 +27,8 @@ import SavedArticleList from './components/SavedArticleList';
 // firebase.initializeApp(firebaseConfig);
 
 function App() {
-  const [savedArticles, setSavedArticles] = useState([]); 
-  const [isSaved, setIsSaved] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [currentUser, setCurrentUser] = useState({id: "pBmcWZixbjllgC3iTxY4", name: "test user", email: "test@email.com"}); 
   const BASE_URL = "http://localhost:5000"
-
-  
-
-
-  // const saveArticle = (userId, articleId) => {
-  //   // but we probably need to pass in the article as the second arg? 
-  //   axios.post(`${BASE_URL}/users/${userId}/articles/${articleId}`)
-  //     .then((response) => {
-  //       const updatedArticles = [...savedArticles, response.data]
-  //       setSavedArticles(updatedArticles)
-  //       setIsSaved(true)
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error)
-  //     })
-  // };
-
-  // const unsaveArticle = (userId, articleId) => {
-  //   const updatedArticles = savedArticles.filter((article) => {
-  //     return article.id !== articleId;
-  //   });
-
-  //   axios.delete(`${BASE_URL}/users/${userId}/articles/${articleId}`)
-  //     .then((response) => {
-  //       setSavedArticles(updatedArticles);
-  //       setIsSaved(false)
-  //       setErrorMessage('');
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error)
-  //     })
-  // };
 
   const logOut = () => {
     firebase.auth().signOut(); 
@@ -75,8 +40,6 @@ function App() {
   // How to get google user documents 
   // How to change info about the user to have this info - saved articles, filtered articles, time preference, etc. 
 
-  // console.log(latestArticles)
-// for profile could pass a saved articles prop
   const user = useContext(UserContext);
   console.log(user)
   
