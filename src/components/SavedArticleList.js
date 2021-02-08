@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import SavedArticle from './SavedArticle';
 
 const SavedArticleList = (props) => {
     const [savedArticles, setSavedArticles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
+    const [reload, setReload] = useState(0);
 
     useEffect(() => {
     axios.get(`${props.baseUrl}/users/${props.user.id}/articles`)
@@ -12,13 +13,47 @@ const SavedArticleList = (props) => {
             const apiArticles = response.data 
             console.log(apiArticles)
             setSavedArticles(apiArticles)
+            // call load saved articles here 
+            // loadSavedArticles()
         })
         .catch((error) => {
             setErrorMessage(error);
             console.log(errorMessage)
         })
-    }, [])
-    
+    }, [reload])
+
+    // if you need to worry about referential equality 
+    // we're not creaitng a new function unless we need to 
+    // const loadSavedArticles = useCallback(() => {
+    //     axios.get(`${props.baseUrl}/users/${props.user.id}/articles`)
+    //     .then((response) => {
+    //         const apiArticles = response.data 
+    //         console.log(apiArticles)
+    //         setSavedArticles(apiArticles)
+    //     })
+    //     .catch((error) => {
+    //         setErrorMessage(error);
+    //         console.log(errorMessage)
+    //     })
+    // }, [])
+
+
+    const unsaveArticle = (userId, articleId) => {
+        // const updatedArticles = savedArticles.filter((article) => {
+        //     return article.id !== articleId;
+        // })
+
+        axios.delete(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
+            .then((response) => {
+            // loadSavedArticles()
+            setReload(reload + 1)
+        })
+            .catch((error) => {
+            setErrorMessage(error)
+        })
+    };
+
+
     const savedArticleComponents = savedArticles.map((savedArticle) => {
         return (
             <SavedArticle key={savedArticle.id}
@@ -33,7 +68,8 @@ const SavedArticleList = (props) => {
             isSaved={true}
             articleId={savedArticle.id}
             userId={props.user.id}
-            baseUrl={props.baseUrl} 
+            baseUrl={props.baseUrl}
+            unsaveArticle={unsaveArticle} 
             />
         )
     })
