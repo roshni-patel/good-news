@@ -2,6 +2,7 @@ import React, { useState, useRef} from 'react';
 import Moment from 'moment';
 import './Article.css'; 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import axios from 'axios'; 
 
 
 const Article = (props) => {
@@ -20,6 +21,18 @@ const Article = (props) => {
     const [value, setValue] = useState('');
     const [copied, setCopied] = useState(false); 
 
+    const saveArticle = (userId, articleId) => {
+        // but we probably need to pass in the article as the second arg? 
+        axios.post(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
+            .then((response) => {
+            // const updatedArticles = [...savedArticles, response.data]
+            // setSavedArticles(updatedArticles)
+            // setIsSaved(true)
+        })
+            .catch((error) => {
+            // setErrorMessage(error)
+        })
+    };
     return (
         <div className="card">
         <img src={props.image_url} class="card-img-top" alt="news"/>
@@ -27,8 +40,7 @@ const Article = (props) => {
             <h5 class="card-title">{props.title}</h5>
             <p class="card-text">{props.description ? props.description : null }</p>
             <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Read</a>
-            {/* <button className="btn btn-primary" onClick={props.saveArticle}>Save</button> */}
-
+            { props.isSaved ? <button className="btn btn-primary" onClick={props.unsaveArticle}>Unsave</button> : <button className="btn btn-primary" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
         </div>
         </div>
     ) 
