@@ -17,6 +17,8 @@ const Article = (props) => {
     //     e.target.focus();
     //     setCopySuccess('Copied!');
     // };
+    const [value, setValue] = useState('');
+    const [copied, setCopied] = useState(false); 
 
     return (
         <div className="card">

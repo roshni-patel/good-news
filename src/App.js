@@ -31,7 +31,7 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]); 
   const [isSaved, setIsSaved] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(false); 
-
+  const [currentUser, setCurrentUser] = useState(null); // maybe better to say user since want to display the name?
   const BASE_URL = "http://localhost:5000"
 
   useEffect(() => {
