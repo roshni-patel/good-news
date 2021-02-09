@@ -22,8 +22,6 @@ const SavedArticleList = (props) => {
         })
     }, [reload])
 
-    // if you need to worry about referential equality 
-    // we're not creaitng a new function unless we need to 
     // const loadSavedArticles = useCallback(() => {
     //     axios.get(`${props.baseUrl}/users/${props.user.id}/articles`)
     //     .then((response) => {
