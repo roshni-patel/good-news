@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import {UserContext} from "../providers/UserProvider";
 
 
 const Profile = (props) => {
+    // displayName used to be name when hardcoded
+    const user = useContext(UserContext)
+    console.log(user)
     return (
         <div>
-            <h1>Welcome, {props.user.name}</h1>
+            <h1>Welcome, {user.displayName}</h1>
             <h3>Your Information:</h3>
             <h4>Name:</h4>
-            <p>{props.user.name}</p>
+            <p>{user.displayName}</p>
             <h4>Email:</h4>
-            <p>{props.user.email}</p>
+            <p>{user.email}</p>
             <Link to="/saved"><h4>Saved Articles</h4></Link>
         </div>
     )
