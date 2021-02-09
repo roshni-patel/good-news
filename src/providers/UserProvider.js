@@ -6,7 +6,6 @@ export const UserContext = createContext({ user: null });
 const UserProvider = (props) => {
   const [user, setUser] = useState(null);
 
-  // without useeffect - would add another event listenre
   useEffect(() => {
     // When the user logs in and out
     auth.onAuthStateChanged(async (user) => {
@@ -17,11 +16,12 @@ const UserProvider = (props) => {
       // Here I can write to Firestore and read from it.
       
       console.log('Returned user Object from Firebase', user);
-      //user.uid
-      const { displayName, email } = user;
+      //user.uid i added in uid here
+      const { displayName, email, uid } = user;
       setUser({
-        displayName,
-        email,
+        name: displayName,
+        email: email,
+        id: uid,
       });
     });
   }, []);

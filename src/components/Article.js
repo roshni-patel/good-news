@@ -35,6 +35,7 @@ const Article = (props) => {
     };
 
     return (
+        <div className="card-deck">
         <div className="card">
         <img src={props.image_url} class="card-img-top" alt="news"/>
         <div class="card-body">
@@ -42,6 +43,7 @@ const Article = (props) => {
             <p class="card-text">{props.description ? props.description : null }</p>
             <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Read</a>
             { props.isSaved ? <button className="btn btn-primary" onClick={props.unsaveArticle}>Unsave</button> : <button className="btn btn-primary" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
+        </div>
         </div>
         </div>
     ) 
