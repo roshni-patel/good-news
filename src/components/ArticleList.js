@@ -45,7 +45,7 @@ const ArticleList = (props) => {
     // return articleComponents
     return (
         <div className="container">
-            <div className="row">
+            <div className="flex-wrap">
                 {articleComponents}
             </div>
         </div>

@@ -78,8 +78,10 @@ const SavedArticleList = (props) => {
     // return savedArticleComponents
 
     return (
-    <div className="row">
-        {savedArticleComponents}
+    <div className="container">
+        <div className="row">
+            {savedArticleComponents}
+        </div>
     </div>
     )
 

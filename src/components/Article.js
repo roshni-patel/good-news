@@ -21,8 +21,8 @@ const Article = (props) => {
 
     return (
         // <div className="row">
-        <div className="card-deck col-lg-6 mb-4">
-        <div className="card">
+        // <div className="col-lg-6 mb-4">
+        <div className="card w-25">
         <img src={props.image_url} class="card-img-top" alt="news"/>
         <div class="card-body">
             <h5 class="card-title">{props.title}</h5>
@@ -35,7 +35,7 @@ const Article = (props) => {
             {copied ? <span style={{ color: "red" }}>Copied!</span> : null}
         </div>
         </div>
-        </div>
+        // </div>
         // </div>
     ) 
 }

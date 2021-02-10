@@ -41,6 +41,7 @@
   float: right;
 }
 
-.user {
+.user a {
   text-decoration: none;
+  color: black;
 }
