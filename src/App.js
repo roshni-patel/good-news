@@ -25,7 +25,6 @@ function App() {
   console.log(currentUser)
   const BASE_URL = "http://localhost:5000"
   
-  
   return (
     <div className="container">
       <Router>
