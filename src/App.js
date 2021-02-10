@@ -25,6 +25,7 @@ function App() {
   console.log(currentUser)
   const BASE_URL = "http://localhost:5000"
   
+  
   return (
     <div className="container">
       <Router>
@@ -52,10 +53,13 @@ function App() {
           </nav>
           {/* Here I want to show login / logout depending on whether the user is signed in, I also want to show their name if logged in, maybe
           this would be nicer to have in the router? */}
-          <span>
+          <div className="logout">
             { currentUser ? <button onClick={logOut} className="btn btn-primary">Logout</button> : <Login />}
-            {console.log(currentUser)}
-            { currentUser ? currentUser.name : null }
+            {/* {console.log(currentUser)} */}
+            {/* { currentUser ? <Link to="/profile">{currentUser.name}</Link> : null } */}
+          </div>
+          <span className="user">
+          { currentUser ? <Link to="/profile">{currentUser.name}</Link> : null }
           </span>
 
           {/* A <Switch> looks through its children <Route>s and

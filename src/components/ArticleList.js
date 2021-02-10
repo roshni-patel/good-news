@@ -3,7 +3,6 @@ import Article from './Article';
 import axios from 'axios';
 
 const ArticleList = (props) => {
-
     const [latestArticles, setLatestArticles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
 
@@ -43,7 +42,15 @@ const ArticleList = (props) => {
         )
     })
     // console.log(articleComponents)
-    return articleComponents
+    // return articleComponents
+    return (
+        <div className="container">
+            <div className="row">
+                {articleComponents}
+            </div>
+        </div>
+        )
+
 }
 
 export default ArticleList;

@@ -75,7 +75,14 @@ const SavedArticleList = (props) => {
             />
         )
     })
-    return savedArticleComponents
+    // return savedArticleComponents
+
+    return (
+    <div className="row">
+        {savedArticleComponents}
+    </div>
+    )
+
 }
 
 export default SavedArticleList; 
