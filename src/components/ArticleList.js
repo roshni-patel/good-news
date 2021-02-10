@@ -11,7 +11,7 @@ const ArticleList = (props) => {
         axios.get(`${props.baseUrl}/articles`)
         .then((response) => {
             const apiArticles = response.data 
-            console.log(apiArticles)
+            // console.log(apiArticles)
             setLatestArticles(apiArticles)
         })
         .catch((error) => {
@@ -20,7 +20,7 @@ const ArticleList = (props) => {
         })
     }, []);
 
-    console.log(props)
+    // console.log(props)
     const articleComponents = latestArticles.map((article) => {
         return (
             <Article key={article.id}
@@ -42,7 +42,7 @@ const ArticleList = (props) => {
             />
         )
     })
-    console.log(articleComponents)
+    // console.log(articleComponents)
     return articleComponents
 }
 

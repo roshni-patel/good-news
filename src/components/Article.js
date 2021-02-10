@@ -18,7 +18,7 @@ const Article = (props) => {
     //     e.target.focus();
     //     setCopySuccess('Copied!');
     // };
-    const [value, setValue] = useState('');
+    // const [value, setValue] = useState('');
     const [copied, setCopied] = useState(false); 
     const [errorMessage, setErrorMessage] = useState('')
 
@@ -43,6 +43,10 @@ const Article = (props) => {
             <p class="card-text">{props.description ? props.description : null }</p>
             <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Read</a>
             { props.isSaved ? <button className="btn btn-primary" onClick={props.unsaveArticle}>Unsave</button> : <button className="btn btn-primary" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
+            <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
+            <button className="btn btn-primary">Share</button>
+            </CopyToClipboard>
+            {copied ? <span style={{ color: "red" }}>Copied!</span> : null}
         </div>
         </div>
         </div>

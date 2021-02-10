@@ -11,10 +11,10 @@ const Profile = (props) => {
     return (
         user ? (
         <div>
-            <h1>Welcome, {user.displayName}</h1>
+            <h1>Welcome, {user.name}</h1>
             <h3>Your Information:</h3>
             <h4>Name:</h4>
-            <p>{user.displayName}</p>
+            <p>{user.name}</p>
             <h4>Email:</h4>
             <p>{user.email}</p>
             <Link to="/saved"><h4>Saved Articles</h4></Link>

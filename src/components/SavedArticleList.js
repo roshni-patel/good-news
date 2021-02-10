@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import axios from 'axios';
 import SavedArticle from './SavedArticle';
+import {UserContext} from "../providers/UserProvider";
+
 
 const SavedArticleList = (props) => {
     const [savedArticles, setSavedArticles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [reload, setReload] = useState(0);
+    const user = useContext(UserContext)
 
     useEffect(() => {
-    axios.get(`${props.baseUrl}/users/${props.user.id}/articles`)
+    axios.get(`${props.baseUrl}/users/${user.id}/articles`)
         .then((response) => {
             const apiArticles = response.data 
             console.log(apiArticles)
@@ -21,6 +24,7 @@ const SavedArticleList = (props) => {
             console.log(errorMessage)
         })
     }, [reload])
+
 
     // const loadSavedArticles = useCallback(() => {
     //     axios.get(`${props.baseUrl}/users/${props.user.id}/articles`)

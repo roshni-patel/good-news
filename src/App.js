@@ -55,7 +55,7 @@ function App() {
           <span>
             { currentUser ? <button onClick={logOut} className="btn btn-primary">Logout</button> : <Login />}
             {console.log(currentUser)}
-            { currentUser ? currentUser.displayName : null }
+            { currentUser ? currentUser.name : null }
           </span>
 
           {/* A <Switch> looks through its children <Route>s and
