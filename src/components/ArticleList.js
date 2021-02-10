@@ -6,8 +6,21 @@ const ArticleList = (props) => {
     const [latestArticles, setLatestArticles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
 
+    // useEffect(() => {
+    //     axios.get(`${props.baseUrl}/articles`)
+    //     .then((response) => {
+    //         const apiArticles = response.data 
+    //         // console.log(apiArticles)
+    //         setLatestArticles(apiArticles)
+    //     })
+    //     .catch((error) => {
+    //         setErrorMessage(error);
+    //         console.log(errorMessage)
+    //     })
+    // }, []);
+
     useEffect(() => {
-        axios.get(`${props.baseUrl}/articles`)
+        axios.get(`${props.baseUrl}`)
         .then((response) => {
             const apiArticles = response.data 
             // console.log(apiArticles)
@@ -44,10 +57,8 @@ const ArticleList = (props) => {
     // console.log(articleComponents)
     // return articleComponents
     return (
-        <div className="container">
-            <div className="flex-wrap">
-                {articleComponents}
-            </div>
+        <div className="row">
+            {articleComponents}
         </div>
         )
 
