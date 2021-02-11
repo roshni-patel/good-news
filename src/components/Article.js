@@ -8,13 +8,15 @@ import {
     FacebookShareButton,
     TwitterShareButton,
     WhatsappShareButton,
+    LinkedinShareButton
 } from "react-share";
 
 import {
     EmailIcon,
     FacebookIcon,
     TwitterIcon,
-    WhatsappIcon
+    WhatsappIcon,
+    LinkedinIcon
 } from "react-share";
 
 
@@ -66,6 +68,7 @@ const Article = (props) => {
             <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-1"/></FacebookShareButton>
             <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
+            <LinkedinShareButton url={props.article_url}><LinkedinIcon size={40} className="m-1"/></LinkedinShareButton>
 
         </div>
         </div>
