@@ -11,11 +11,12 @@
     "firebase": "^8.2.5",
     "firebaseui": "^4.7.1",
     "moment": "^2.29.1",
-    "react": "^17.0.1",
+    "react": "^16.3.0",
     "react-copy-to-clipboard": "^5.0.3",
-    "react-dom": "^17.0.1",
+    "react-dom": "^16.3.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-share": "^4.3.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
