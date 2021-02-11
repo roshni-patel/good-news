@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import axios from 'axios';
 import SavedArticle from './SavedArticle';
+import { Redirect } from 'react-router-dom';
 import {UserContext} from "../providers/UserProvider";
 
 
@@ -26,20 +27,6 @@ const SavedArticleList = (props) => {
     }, [reload])
 
 
-    // const loadSavedArticles = useCallback(() => {
-    //     axios.get(`${props.baseUrl}/users/${props.user.id}/articles`)
-    //     .then((response) => {
-    //         const apiArticles = response.data 
-    //         console.log(apiArticles)
-    //         setSavedArticles(apiArticles)
-    //     })
-    //     .catch((error) => {
-    //         setErrorMessage(error);
-    //         console.log(errorMessage)
-    //     })
-    // }, [])
-
-
     const unsaveArticle = (userId, articleId) => {
         axios.delete(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
@@ -51,6 +38,10 @@ const SavedArticleList = (props) => {
         })
     };
 
+
+    if (!user) {
+        return <Redirect to="/"/>
+    }
 
     const savedArticleComponents = savedArticles.map((savedArticle) => {
         return (

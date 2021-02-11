@@ -1,8 +1,7 @@
-import React, {useState} from 'react'; 
+import React from 'react'; 
+
 
 const SavedArticle = (props) => {
-    const [errorMessage, setErrorMessage] = useState('')
-
     return (
         <div className="col-sm-6 mb-4">
         <div className="card h-100">
