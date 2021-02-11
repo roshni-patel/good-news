@@ -9,8 +9,10 @@ const ArticleList = (props) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [savedArticles, setSavedArticles] = useState([]); 
     const user = useContext(UserContext)
-
+    console.log(user)
     const getSavedArticles = useCallback(() => {
+        if (!user) { return; }
+
         axios.get(`${props.baseUrl}/users/${user.id}/articles`)
         .then((response) => {
             const apiArticles = response.data 
@@ -21,7 +23,7 @@ const ArticleList = (props) => {
             setErrorMessage(error);
             console.log(error)
         })
-    }, [props.baseUrl, user.id]) 
+    }, [props.baseUrl, user]) 
 
     const getLatestArticles = useCallback(() => {
         axios.get(`${props.baseUrl}`)
@@ -44,6 +46,17 @@ const ArticleList = (props) => {
 
     // console.log(props)
 
+    console.log(savedArticles)
+    const checkIsSaved = (articleId) => {
+        // in is indices, of is obj
+        for (const article of savedArticles) {
+            if (article.id === articleId) {
+                return true; 
+            } 
+        }
+        return false; 
+    }
+
     const articleComponents = latestArticles.map((article) => {
         return (
             <Article key={article.id}
@@ -55,7 +68,7 @@ const ArticleList = (props) => {
             publication_date={article.publication_date}
             image_url={article.image_url}
             sentiment={article.sentiment} 
-            isSaved={false}
+            isSaved={checkIsSaved(article.id)}
             articleId={article.id}
             userId={props.user?.id}
             baseUrl={props.baseUrl} 
