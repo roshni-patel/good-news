@@ -6,48 +6,16 @@ import {UserContext} from "../providers/UserProvider";
 import {
     EmailShareButton,
     FacebookShareButton,
-    HatenaShareButton,
-    InstapaperShareButton,
-    LineShareButton,
-    LinkedinShareButton,
-    LivejournalShareButton,
-    MailruShareButton,
-    OKShareButton,
-    PinterestShareButton,
-    PocketShareButton,
-    RedditShareButton,
-    TelegramShareButton,
-    TumblrShareButton,
     TwitterShareButton,
-    ViberShareButton,
-    VKShareButton,
     WhatsappShareButton,
-    WorkplaceShareButton
 } from "react-share";
 
 import {
     EmailIcon,
     FacebookIcon,
-    FacebookMessengerIcon,
-    HatenaIcon,
-    InstapaperIcon,
-    LineIcon,
-    LinkedinIcon,
-    LivejournalIcon,
-    MailruIcon,
-    OKIcon,
-    PinterestIcon,
-    PocketIcon,
-    RedditIcon,
-    TelegramIcon,
-    TumblrIcon,
     TwitterIcon,
-    ViberIcon,
-    VKIcon,
-    WeiboIcon,
-    WhatsappIcon,
-    WorkplaceIcon
-  } from "react-share";
+    WhatsappIcon
+} from "react-share";
 
 
 const Article = (props) => {
@@ -91,15 +59,13 @@ const Article = (props) => {
         <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary m-1">Read</a>
         { props.isSaved ? <button className="btn btn-primary" onClick={() => unsaveArticle(props.userId, props.articleId)}>Unsave</button> : <button className="btn btn-primary m-1" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
             <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
-            <button className="btn btn-primary m-1">Share</button>
+            <button className="btn btn-primary m-1">Copy Link</button>
             </CopyToClipboard>
             {copied ? <span style={{ color: "red" }}>Copied!</span> : null}
-            <EmailShareButton
-            url={props.article_url}>
-                <EmailIcon />
-            </EmailShareButton>
-            <FacebookShareButton url={props.article_url}><FacebookIcon/></FacebookShareButton>
-            <TwitterShareButton url={props.article_url}><TwitterIcon/></TwitterShareButton>
+            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-1" /></EmailShareButton>
+            <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-1"/></FacebookShareButton>
+            <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
+            <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
 
         </div>
         </div>
