@@ -1,0 +1,46 @@
+[debug] [2021-02-10T22:37:40.121Z] ----------------------------------------------------------------------
+[debug] [2021-02-10T22:37:40.123Z] Command:       /usr/local/bin/firebase /Users/roshnipatel/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2021-02-10T22:37:40.123Z] CLI Version:   9.3.0
+[debug] [2021-02-10T22:37:40.123Z] Platform:      darwin
+[debug] [2021-02-10T22:37:40.123Z] Node Version:  v12.18.1
+[debug] [2021-02-10T22:37:40.124Z] Time:          Wed Feb 10 2021 16:37:40 GMT-0600 (Central Standard Time)
+[debug] [2021-02-10T22:37:40.124Z] ----------------------------------------------------------------------
+[debug] [2021-02-10T22:37:40.124Z] 
+[debug] [2021-02-10T22:37:40.128Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-10T22:37:40.129Z] > authorizing via signed-in user
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2021-02-10T22:37:40.145Z] [hub] writing locator at /var/folders/_t/1zq6dyy9263cl6htmt3d_bm00000gn/T/hub-good-news-6d972.json
+[debug] [2021-02-10T22:37:40.158Z] > refreshing access token with scopes: []
+[debug] [2021-02-10T22:37:40.158Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-10T22:37:40.332Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Wed, 10 Feb 2021 22:37:40 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-10T22:37:40.361Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/good-news-6d972/webApps/-/config [none]
+[debug] [2021-02-10T22:37:40.669Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/good-news-6d972/webApps/-/config 200
+[debug] [2021-02-10T22:37:40.669Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/good-news-6d972/webApps/-/config {"projectId":"good-news-6d972","appId":"1:154635165262:web:944bc8e9896734affd2d1f","storageBucket":"good-news-6d972.appspot.com","locationId":"us-central","apiKey":"AIzaSyCLub7RYETVWIJq7Uu4V3IuM_ACta_GbWg","authDomain":"good-news-6d972.firebaseapp.com","messagingSenderId":"154635165262"}
+[info] i  hosting: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5001 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5001\u001b[22m\u001b[24m"}}
+[warn] ⚠  emulators: The Emulator UI requires a project ID to start. Configure your default project with 'firebase use' or pass the ---project flag. {"metadata":{"emulator":{"name":"hub"},"message":"The Emulator UI requires a project ID to start. Configure your default project with 'firebase use' or pass the ---project flag."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┐
+│ Emulator │ Host:Port      │
+├──────────┼────────────────┤
+│ Hosting  │ localhost:5001 │
+└──────────┴────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: None
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] "GET / HTTP/1.1" 200 3477 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] \"GET / HTTP/1.1\" 200 3477 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] "GET /__/firebase/init.js?useEmulator=true HTTP/1.1" 200 - "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] \"GET /__/firebase/init.js?useEmulator=true HTTP/1.1\" 200 - \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] "GET /static/css/2.673fadc8.chunk.css HTTP/1.1" 200 40399 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] \"GET /static/css/2.673fadc8.chunk.css HTTP/1.1\" 200 40399 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] "GET /static/css/main.02aad671.chunk.css HTTP/1.1" 200 864 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] \"GET /static/css/main.02aad671.chunk.css HTTP/1.1\" 200 864 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] "GET /static/js/main.5dcc05db.chunk.js HTTP/1.1" 200 7570 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] \"GET /static/js/main.5dcc05db.chunk.js HTTP/1.1\" 200 7570 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] "GET /static/js/2.1a9de4e5.chunk.js HTTP/1.1" 200 672941 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:57 +0000] \"GET /static/js/2.1a9de4e5.chunk.js HTTP/1.1\" 200 672941 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:58 +0000] "GET /btn_google_signin.png HTTP/1.1" 200 4328 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:58 +0000] \"GET /btn_google_signin.png HTTP/1.1\" 200 4328 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:58 +0000] "GET /manifest.json HTTP/1.1" 200 492 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:58 +0000] \"GET /manifest.json HTTP/1.1\" 200 492 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [10/Feb/2021:22:37:58 +0000] "GET /logo192.png HTTP/1.1" 200 5347 "http://localhost:5001/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [10/Feb/2021:22:37:58 +0000] \"GET /logo192.png HTTP/1.1\" 200 5347 \"http://localhost:5001/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36\""}}

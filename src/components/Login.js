@@ -22,8 +22,8 @@ const Login = () => {
   return (
       <div className="login-buttons">
         <button className="btn btn-primary" onClick={signInWithGoogle}>
-          <img src="https://img.icons8.com/ios-filled/50/000000/google-logo.png" alt="google icon"/>
-          {/* <img src="/src/btn_google_signin.png" alt="google icon"/> */}
+          {/* <img src="https://img.icons8.com/ios-filled/50/000000/google-logo.png" alt="google icon"/> */}
+          <img src="/btn_google_signin.png" alt="google icon"/>
           <span> Continue with Google</span>
         </button>
       </div>
