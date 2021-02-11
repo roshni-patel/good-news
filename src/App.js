@@ -12,6 +12,7 @@ import Profile from './components/Profile';
 import Login from './components/Login'; 
 import { UserContext } from "./providers/UserProvider";
 import ArticleList from './components/ArticleList';
+import Nav from './components/Nav';
 
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
@@ -30,7 +31,8 @@ function App() {
     <div className="container">
       <Router>
         <div>
-          <nav className="navbar navbar-dark bg-dark">
+          {/* <Nav> */}
+          <nav>
             <ul>
               <li>
                 <Link to="/">Home</Link>
@@ -40,9 +42,6 @@ function App() {
                 <Link to="/login">Login</Link>
               </li>
               }
-              {/* <li>
-                <Link to="/login">Login with Google</Link>
-              </li>  */}
               { currentUser ?
               <li> 
                 <Link to="/profile">Profile</Link> 
@@ -51,6 +50,7 @@ function App() {
               }
             </ul>
           </nav>
+          {/* </Nav> */}
           {/* Here I want to show login / logout depending on whether the user is signed in, I also want to show their name if logged in, maybe
           this would be nicer to have in the router? */}
           <div className="logout">
