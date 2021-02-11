@@ -23,6 +23,7 @@ function App() {
   // const [currentUser, setCurrentUser] = useState({id: "pBmcWZixbjllgC3iTxY4", name: "test user", email: "test@email.com"}); 
   const currentUser = useContext(UserContext)
   console.log(currentUser)
+  // https://good-news-capstone.herokuapp.com/
   const BASE_URL = "http://localhost:5000"
   
   return (

@@ -12,14 +12,28 @@ const Article = (props) => {
     const [copied, setCopied] = useState(false); 
     const [errorMessage, setErrorMessage] = useState('')
 
+    // pull into article list or pass into article 
+    // delete call as well
     const saveArticle = (userId, articleId) => {
         axios.post(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
+                props.onSaveUpdated()
         })
             .catch((error) => {
             setErrorMessage(error)
         })
     };
+
+    const unsaveArticle = (userId, articleId) => {
+        axios.delete(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
+            .then((response) => {
+                props.onSaveUpdated()
+        })
+            .catch((error) => {
+            setErrorMessage(error)
+        })
+    };
+
 
     return (
         <div className="col-sm-6 mb-4">
@@ -31,7 +45,7 @@ const Article = (props) => {
         </div>
         <div class="card-footer">
         <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary m-1">Read</a>
-            { props.isSaved ? <button className="btn btn-primary" onClick={props.unsaveArticle}>Unsave</button> : <button className="btn btn-primary m-1" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
+            { props.isSaved ? <button className="btn btn-primary" onClick={() => unsaveArticle(props.userId, props.articleId)}>Unsave</button> : <button className="btn btn-primary m-1" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
             <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
             <button className="btn btn-primary m-1">Share</button>
             </CopyToClipboard>
