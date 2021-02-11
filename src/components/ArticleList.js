@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useCallback} from 'react';
 import Article from './Article';
 import axios from 'axios';
-import {UserContext} from "../providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
 
 
 const ArticleList = (props) => {
@@ -77,13 +77,12 @@ const ArticleList = (props) => {
             />
         )
     })
-    // console.log(articleComponents)
+
     return (
         <div className="row">
             {articleComponents}
         </div>
         )
-
 }
 
 export default ArticleList;

@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 const Login = () => {
   const user = useContext(UserContext);
-  console.log(user);
+//   console.log(user);
 
   const [redirect, setredirect] = useState(null);
 //   if user is logged in, updates redirect to dashboard, if set, logged in already sents dashboard 

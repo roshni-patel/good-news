@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import SavedArticle from './SavedArticle';
 import { Redirect } from 'react-router-dom';
@@ -17,8 +17,6 @@ const SavedArticleList = (props) => {
             const apiArticles = response.data 
             console.log(apiArticles)
             setSavedArticles(apiArticles)
-            // call load saved articles here 
-            // loadSavedArticles()
         })
         .catch((error) => {
             setErrorMessage(error);
@@ -30,7 +28,6 @@ const SavedArticleList = (props) => {
     const unsaveArticle = (userId, articleId) => {
         axios.delete(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
-            // loadSavedArticles()
             setReload(reload + 1)
         })
             .catch((error) => {
@@ -65,10 +62,9 @@ const SavedArticleList = (props) => {
 
     return (
     <div className="row">
-            {savedArticleComponents}
+        {savedArticleComponents}
     </div>
     )
-
 }
 
 export default SavedArticleList; 

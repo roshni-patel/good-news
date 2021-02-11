@@ -1,29 +1,25 @@
 import './App.css';
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link, 
-  Redirect
 } from "react-router-dom";
-import axios from 'axios'; 
 import Profile from './components/Profile'; 
 import Login from './components/Login'; 
 import { UserContext } from "./providers/UserProvider";
 import ArticleList from './components/ArticleList';
 import Nav from './components/Nav';
 
-import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import SavedArticleList from './components/SavedArticleList';
 import { logOut } from './services/firebase';
 
 
 function App() {
-  // const [currentUser, setCurrentUser] = useState({id: "pBmcWZixbjllgC3iTxY4", name: "test user", email: "test@email.com"}); 
   const currentUser = useContext(UserContext)
-  console.log(currentUser)
+  // console.log(currentUser)
   // https://good-news-capstone.herokuapp.com/
   const BASE_URL = "http://localhost:5000"
   

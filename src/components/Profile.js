@@ -4,10 +4,9 @@ import {UserContext} from "../providers/UserProvider";
 
 
 const Profile = (props) => {
-    // displayName used to be name when hardcoded
     const user = useContext(UserContext)
-    console.log(user)
-    console.log(user?.uid)
+    // console.log(user)
+    // console.log(user?.uid)
     return (
         user ? (
         <div>

@@ -69,7 +69,6 @@ const Article = (props) => {
             <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
             <LinkedinShareButton url={props.article_url}><LinkedinIcon size={40} className="m-1"/></LinkedinShareButton>
-
         </div>
         </div>
         </div>
