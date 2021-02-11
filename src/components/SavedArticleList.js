@@ -41,10 +41,6 @@ const SavedArticleList = (props) => {
 
 
     const unsaveArticle = (userId, articleId) => {
-        // const updatedArticles = savedArticles.filter((article) => {
-        //     return article.id !== articleId;
-        // })
-
         axios.delete(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
             // loadSavedArticles()
@@ -75,7 +71,6 @@ const SavedArticleList = (props) => {
             />
         )
     })
-    // return savedArticleComponents
 
     return (
     <div className="row">

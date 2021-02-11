@@ -29,14 +29,14 @@ function App() {
     <div className="container">
       <Router>
         <div>
-          <nav>
+          <nav className="navbar navbar-dark bg-dark">
             <ul>
               <li>
                 <Link to="/">Home</Link>
               </li>
               { currentUser ? null :
               <li>
-                <Link to="/login">Login with Google</Link>
+                <Link to="/login">Login</Link>
               </li>
               }
               {/* <li>

@@ -55,7 +55,6 @@ const ArticleList = (props) => {
         )
     })
     // console.log(articleComponents)
-    // return articleComponents
     return (
         <div className="row">
             {articleComponents}

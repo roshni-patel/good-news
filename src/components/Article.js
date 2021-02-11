@@ -1,11 +1,13 @@
-import React, { useState, useRef} from 'react';
-import Moment from 'moment';
+import React, { useState, useContext} from 'react';
 import './Article.css'; 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import axios from 'axios'; 
+// import {UserContext} from "../providers/UserProvider";
+
 
 
 const Article = (props) => {
+    // const user = useContext(UserContext)
 
     const [copied, setCopied] = useState(false); 
     const [errorMessage, setErrorMessage] = useState('')
@@ -20,8 +22,6 @@ const Article = (props) => {
     };
 
     return (
-        // <div className="row">
-        // <div className="col-lg-6 mb-4">
         <div className="col-sm-6 mb-4">
         <div className="card h-100">
         <img src={props.image_url} class="card-img-top" alt="news"/>
