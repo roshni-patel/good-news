@@ -8,7 +8,8 @@ import {
     FacebookShareButton,
     TwitterShareButton,
     WhatsappShareButton,
-    LinkedinShareButton
+    LinkedinShareButton,
+    ViberShareButton
 } from "react-share";
 
 import {
@@ -16,7 +17,8 @@ import {
     FacebookIcon,
     TwitterIcon,
     WhatsappIcon,
-    LinkedinIcon
+    LinkedinIcon,
+    ViberIcon
 } from "react-share";
 
 
@@ -59,7 +61,12 @@ const Article = (props) => {
         </div>
         <div className="card-footer">
         <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary m-1">Read</a>
-        { props.isSaved ? <button className="btn btn-primary" onClick={() => unsaveArticle(props.userId, props.articleId)}>Unsave</button> : <button className="btn btn-primary m-1" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> }
+        {/* { props.isSaved ? <button className="btn btn-primary" onClick={() => unsaveArticle(props.userId, props.articleId)}>Unsave</button> : <button className="btn btn-primary m-1" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button> } */}
+            
+        { user ? 
+            props.isSaved ? <button className="btn btn-primary" onClick={() => unsaveArticle(props.userId, props.articleId)}>Unsave</button> : <button className="btn btn-primary m-1" onClick={() => saveArticle(props.userId, props.articleId)}>Save</button>
+            : null 
+        }
             <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
             <button className="btn btn-primary m-1">Copy Link</button>
             </CopyToClipboard>
@@ -69,6 +76,7 @@ const Article = (props) => {
             <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
             <LinkedinShareButton url={props.article_url}><LinkedinIcon size={40} className="m-1"/></LinkedinShareButton>
+            <ViberShareButton url={props.article_url}><ViberIcon size={40} className="m-1"/></ViberShareButton>
         </div>
         </div>
         </div>

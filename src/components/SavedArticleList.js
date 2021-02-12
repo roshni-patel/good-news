@@ -12,9 +12,9 @@ const SavedArticleList = (props) => {
     const user = useContext(UserContext)
     console.log(user)
 
-    if (!user) {
-        return <Redirect to="/"/>
-    }
+    // if (!user) {
+    //     return <Redirect to="/"/>
+    // }
 
     useEffect(() => {
     axios.get(`${props.baseUrl}/users/${user.id}/articles`)
@@ -41,9 +41,10 @@ const SavedArticleList = (props) => {
     };
 
     // originally had down here
-    // if (!user) {
-    //     return <Redirect to="/"/>
-    // }
+    // this seems right? because when I had it up above it gave me a rendered fewer hooks than expected error
+    if (!user) {
+        return <Redirect to="/"/>
+    }
 
     const savedArticleComponents = savedArticles.map((savedArticle) => {
         return (
