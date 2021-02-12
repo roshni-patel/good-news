@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from "../providers/UserProvider";
 import { logOut } from '../services/firebase';
 import Login from './Login';
+import './Nav.css';
 
 const Nav = () => {
     const currentUser = useContext(UserContext)
