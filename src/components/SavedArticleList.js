@@ -17,6 +17,7 @@ const SavedArticleList = (props) => {
     // }
 
     useEffect(() => {
+        if (!user) { return; } 
     axios.get(`${props.baseUrl}/users/${user.id}/articles`)
         .then((response) => {
             const apiArticles = response.data 
