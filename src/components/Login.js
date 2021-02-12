@@ -5,29 +5,27 @@ import { UserContext } from '../providers/UserProvider';
 import { Redirect } from 'react-router-dom';
 
 const Login = () => {
-  const user = useContext(UserContext);
+    const user = useContext(UserContext);
 //   console.log(user);
 
-  const [redirect, setredirect] = useState(null);
+    const [redirect, setredirect] = useState(null);
 //   if user is logged in, updates redirect to dashboard, if set, logged in already sents dashboard 
-  useEffect(() => {
+    useEffect(() => {
     if (user) {
-      setredirect('/profile');
+        setredirect('/profile');
     }
-  }, [user])
-  
-  if (redirect) {
-   return <Redirect to={redirect} />
-  }
-  return (
-      <div className="login-buttons">
+}, [user])
+
+if (redirect) {
+    return <Redirect to={redirect} />
+}
+return (
+    <div className="login-buttons">
         <button className="btn btn-primary" onClick={signInWithGoogle}>
-          {/* <img src="https://img.icons8.com/ios-filled/50/000000/google-logo.png" alt="google icon"/> */}
-          <img src="/btn_google_signin.png" alt="google icon"/>
-          <span> Continue with Google</span>
+            Sign in with Google
         </button>
-      </div>
-  );
+    </div>
+);
 }
 
 export default Login;
