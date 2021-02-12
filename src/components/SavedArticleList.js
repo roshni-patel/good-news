@@ -10,6 +10,11 @@ const SavedArticleList = (props) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [reload, setReload] = useState(0);
     const user = useContext(UserContext)
+    console.log(user)
+
+    if (!user) {
+        return <Redirect to="/"/>
+    }
 
     useEffect(() => {
     axios.get(`${props.baseUrl}/users/${user.id}/articles`)
@@ -35,10 +40,10 @@ const SavedArticleList = (props) => {
         })
     };
 
-
-    if (!user) {
-        return <Redirect to="/"/>
-    }
+    // originally had down here
+    // if (!user) {
+    //     return <Redirect to="/"/>
+    // }
 
     const savedArticleComponents = savedArticles.map((savedArticle) => {
         return (

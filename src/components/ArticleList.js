@@ -48,9 +48,7 @@ const ArticleList = (props) => {
         getLatestArticles()
     }, [getSavedArticles, getLatestArticles]);
 
-    // console.log(props)
-
-    console.log(savedArticles)
+    
     const checkIsSaved = (articleId) => {
         // in is indices, of is obj
         for (const article of savedArticles) {

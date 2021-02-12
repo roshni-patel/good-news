@@ -14,7 +14,7 @@ import "firebase/auth";
 let auth; 
 let googleProvider;
 if (window.firebase) {
-  console.log("in window firbase")
+  console.log("in window firebase")
   auth = window.firebase.auth();
 
   googleProvider = new window.firebase.auth.GoogleAuthProvider();
