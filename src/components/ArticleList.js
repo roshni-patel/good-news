@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useCallback} from 'react';
 import Article from './Article';
 import axios from 'axios';
 import { UserContext } from "../providers/UserProvider";
-
+// import { Redirect } from 'react-router-dom';
 
 const ArticleList = (props) => {
     const [latestArticles, setLatestArticles] = useState([]);
@@ -10,8 +10,12 @@ const ArticleList = (props) => {
     const [savedArticles, setSavedArticles] = useState([]); 
     const user = useContext(UserContext)
     console.log(user)
+
     const getSavedArticles = useCallback(() => {
         if (!user) { return; }
+        // if (!user) {
+        //     return <Redirect to="/"/>
+        // }
 
         axios.get(`${props.baseUrl}/users/${user.id}/articles`)
         .then((response) => {

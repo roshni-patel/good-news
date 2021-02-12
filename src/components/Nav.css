@@ -2,3 +2,7 @@ a, a:hover {
     color: white;
     text-decoration: none;
 }
+
+.saved {
+    color: black;
+}
