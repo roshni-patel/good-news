@@ -17,11 +17,11 @@ const Nav = () => {
             <div className="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item m-2">
-                        <Link to="/">Home</Link>
+                        <Link to="/" className="nav-links">Home</Link>
                     </li>
                 { currentUser ?
                 <li className="nav-item m-2"> 
-                    <Link to="/profile">Profile</Link> 
+                    <Link to="/profile" className="nav-links">Profile</Link> 
                 </li>
                 : null 
                 }

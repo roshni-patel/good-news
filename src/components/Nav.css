@@ -3,6 +3,10 @@ a, a:hover {
     text-decoration: none;
 }
 
-.saved {
+.nav-links:hover {
+    color: white; 
+}
+
+.saved, a:hover {
     color: black;
 }

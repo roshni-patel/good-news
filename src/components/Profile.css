@@ -1,3 +1,7 @@
-a:hover, .saved {
+.saved {
     color: black;
+}
+
+a:hover {
+    color: white;
 }
