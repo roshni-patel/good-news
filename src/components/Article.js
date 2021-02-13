@@ -8,7 +8,9 @@ import {
     FacebookShareButton,
     TwitterShareButton,
     WhatsappShareButton,
-    ViberShareButton
+    ViberShareButton,
+    RedditShareButton,
+    PocketShareButton
 } from "react-share";
 
 import {
@@ -16,7 +18,9 @@ import {
     FacebookIcon,
     TwitterIcon,
     WhatsappIcon,
-    ViberIcon
+    ViberIcon,
+    RedditIcon,
+    PocketIcon
 } from "react-share";
 
 
@@ -66,11 +70,13 @@ const Article = (props) => {
             <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
             { copied ?  <button className="btn btn-primary m-1">Copied!</button> : <button className="btn btn-primary m-1">Copy Link</button>}
             </CopyToClipboard>
-            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-1" /></EmailShareButton>
+            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-1" openShareDialogOnClick={true} /></EmailShareButton>
             <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-1"/></FacebookShareButton>
             <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
             <ViberShareButton url={props.article_url}><ViberIcon size={40} className="m-1"/></ViberShareButton>
+            { !user ? <RedditShareButton url={props.article_url}><RedditIcon size={40} className="m-1"/></RedditShareButton> : null }
+            {/* { !user ? <PocketShareButton url={props.article_url}><PocketIcon size={40} className="m-1"/></PocketShareButton> : null } */}
         </div>
         </div>
         </div>
