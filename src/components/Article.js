@@ -52,13 +52,13 @@ const Article = (props) => {
         })
     };
 
-
     return (
         <div className="col-sm-6 mb-4">
         <div className="card h-100">
         <img src={props.image_url} className="card-img-top" alt="news"/>
         <div className="card-body">
             <h5 className="card-title">{props.source_name}: {props.title}</h5>
+            <p className="card-subtitle mb-2 text-muted">{props.convertTime(props.publication_date)}</p>
             <p className="card-text">{props.description ? props.description : null }</p>
         </div>
         <div className="card-footer">

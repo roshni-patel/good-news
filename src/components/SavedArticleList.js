@@ -58,6 +58,7 @@ const SavedArticleList = (props) => {
             userId={props.user.id}
             baseUrl={props.baseUrl}
             unsaveArticle={unsaveArticle} 
+            convertTime={props.convertTime}
             />
         )
     })

@@ -75,6 +75,7 @@ const ArticleList = (props) => {
             userId={props.user?.id}
             baseUrl={props.baseUrl} 
             onSaveUpdated={getSavedArticles}
+            convertTime={props.convertTime}
             // this would be null if user not logged in, safe traversal/elvis operator, if expression on left evaluates then it stops, otherwise keeps going
             />
         )

@@ -18,6 +18,10 @@ function App() {
   // console.log(currentUser)
   // https://good-news-capstone.herokuapp.com/
   const BASE_URL = "http://localhost:5000"
+
+  const convertTime = (publicationDate) => {
+    return new Date(publicationDate).toLocaleString();
+  }
   
   return (
     <div className="container">
@@ -34,10 +38,10 @@ function App() {
               <Profile user={currentUser}/>
             </Route>
             <Route path="/saved">
-              <SavedArticleList baseUrl={BASE_URL} user={currentUser} />
+              <SavedArticleList baseUrl={BASE_URL} user={currentUser} convertTime={convertTime}/>
             </Route>
             <Route path="/">
-              <ArticleList baseUrl={BASE_URL} user={currentUser}/>
+              <ArticleList baseUrl={BASE_URL} user={currentUser} convertTime={convertTime}/>
             </Route>
           </Switch>
         </div>
