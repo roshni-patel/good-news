@@ -35,7 +35,7 @@ function App() {
               <Login />
             </Route>
             <Route path="/profile">
-              <Profile user={currentUser}/>
+              <Profile />
             </Route>
             <Route path="/saved">
               <SavedArticleList baseUrl={BASE_URL} user={currentUser} convertTime={convertTime}/>

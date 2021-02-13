@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import SavedArticle from './SavedArticle';
 import { Redirect } from 'react-router-dom';
-import {UserContext} from "../providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
+import PropTypes from 'prop-types';
 
 
 const SavedArticleList = (props) => {
@@ -69,5 +70,10 @@ const SavedArticleList = (props) => {
     </div>
     )
 }
+
+SavedArticleList.propTypes = {
+    baseUrl: PropTypes.string.isRequired,
+    convertTime: PropTypes.func.isRequired
+};
 
 export default SavedArticleList; 

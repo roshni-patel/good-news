@@ -13,6 +13,7 @@ import {
     TwitterIcon,
     WhatsappIcon,
 } from "react-share";
+import PropTypes from 'prop-types';
 
 const SavedArticle = (props) => {
     const [copied, setCopied] = useState(false); 
@@ -42,5 +43,22 @@ const SavedArticle = (props) => {
         </div>
     ) 
 }
+
+SavedArticle.propTypes = {
+    baseUrl: PropTypes.string.isRequired,
+    convertTime: PropTypes.func.isRequired,
+    article_url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    description: PropTypes.string,
+    source_name: PropTypes.string.isRequired,
+    publication_date: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
+    sentiment: PropTypes.string.isRequired,
+    isSaved: PropTypes.bool.isRequired,
+    articleId: PropTypes.string.isRequired, 
+    userId: PropTypes.string,
+    unsaveArticle: PropTypes.func.isRequired
+};
 
 export default SavedArticle;

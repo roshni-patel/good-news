@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext, useCallback} from 'react';
 import Article from './Article';
 import axios from 'axios';
 import { UserContext } from "../providers/UserProvider";
+import PropTypes from 'prop-types';
+
 // import { Redirect } from 'react-router-dom';
 
 const ArticleList = (props) => {
@@ -87,5 +89,10 @@ const ArticleList = (props) => {
         </div>
         )
 }
+
+ArticleList.propTypes = {
+    baseUrl: PropTypes.string.isRequired,
+    convertTime: PropTypes.func.isRequired
+};
 
 export default ArticleList;

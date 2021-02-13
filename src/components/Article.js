@@ -2,7 +2,7 @@ import React, { useState, useContext} from 'react';
 import './Article.css'; 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import axios from 'axios'; 
-import {UserContext} from "../providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -22,6 +22,7 @@ import {
     RedditIcon,
     PocketIcon
 } from "react-share";
+import PropTypes from 'prop-types';
 
 
 const Article = (props) => {
@@ -83,5 +84,22 @@ const Article = (props) => {
         </div>
     ) 
 }
+
+Article.propTypes = {
+    baseUrl: PropTypes.string.isRequired,
+    convertTime: PropTypes.func.isRequired,
+    article_url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string,
+    description: PropTypes.string,
+    source_name: PropTypes.string.isRequired,
+    publication_date: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
+    sentiment: PropTypes.string.isRequired,
+    isSaved: PropTypes.bool.isRequired,
+    articleId: PropTypes.string.isRequired, 
+    userId: PropTypes.string,
+    onSaveUpdated: PropTypes.func.isRequired
+};
 
 export default Article; 
