@@ -9,8 +9,7 @@ import {
     TwitterShareButton,
     WhatsappShareButton,
     ViberShareButton,
-    RedditShareButton,
-    PocketShareButton
+    RedditShareButton
 } from "react-share";
 
 import {
@@ -19,8 +18,7 @@ import {
     TwitterIcon,
     WhatsappIcon,
     ViberIcon,
-    RedditIcon,
-    PocketIcon
+    RedditIcon
 } from "react-share";
 import PropTypes from 'prop-types';
 
@@ -78,7 +76,6 @@ const Article = (props) => {
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
             <ViberShareButton url={props.article_url}><ViberIcon size={40} className="m-1"/></ViberShareButton>
             { !user ? <RedditShareButton url={props.article_url}><RedditIcon size={40} className="m-1"/></RedditShareButton> : null }
-            {/* { !user ? <PocketShareButton url={props.article_url}><PocketIcon size={40} className="m-1"/></PocketShareButton> : null } */}
         </div>
         </div>
         </div>

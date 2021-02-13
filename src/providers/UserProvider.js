@@ -1,5 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { auth } from '../services/firebase';
+import PropTypes from 'prop-types';
+
 
 export const UserContext = createContext({ user: null });
 
@@ -31,6 +33,10 @@ const UserProvider = (props) => {
   return (
     <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
   )
+}
+
+UserProvider.propTypes = {
+  children: PropTypes.node
 }
 
 export default UserProvider;
