@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {UserContext} from "../providers/UserProvider";
 import './Profile.css';
 
 
 const Profile = () => {
     const user = useContext(UserContext)
-    // console.log(user)
-    // console.log(user?.uid)
+
     return (
         user ? (
         <div>
@@ -17,7 +16,6 @@ const Profile = () => {
             <p>{user.name}</p>
             <h4>Email:</h4>
             <p>{user.email}</p>
-            <Link to="/saved" className="saved"><h4>Saved Articles</h4></Link>
         </div>
     ) : (<Redirect to="/"/>)
     )

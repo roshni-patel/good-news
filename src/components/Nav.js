@@ -25,6 +25,12 @@ const Nav = () => {
                 </li>
                 : null 
                 }
+                { currentUser ?
+                <li className="nav-item m-2"> 
+                    <Link to="/saved" className="nav-links">Saved</Link> 
+                </li>
+                : null 
+                }
                 </ul>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
