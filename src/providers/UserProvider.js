@@ -42,7 +42,7 @@ const UserProvider = (props) => {
         id: uid,
       });
     });
-  }, [user]);
+  }, []);
 
   // component providing context, value is the user state 
   // any component can just use context, they just have to be a child 
