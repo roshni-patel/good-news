@@ -41,10 +41,22 @@ if (window.firebase) {
 const signInWithGoogle = () => {
     auth.signInWithPopup(googleProvider).then((res) => {
     console.log(res.user);
+    // include access token
+    // firebase.firestore().collection('users').doc(res.user.uid).set(res.user)
+    // var credential = result.credential;
+    // var token = credential.accessToken;
+    // // var credential = res.credential;
+    // var user = res.user;
+
     // immediately after logging in 
     // write to firebase, or load something 
   }).catch((error) => {
     console.log(error.message);
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
+    // var email = error.email;
+    // var credential = error.credential;
+
   });
 }
 

@@ -15,7 +15,9 @@ import SavedArticleList from './components/SavedArticleList';
 
 function App() {
   const currentUser = useContext(UserContext)
-  const BASE_URL = "https://good-news-capstone.herokuapp.com/"
+  const BASE_URL = "https://good-news-capstone.herokuapp.com"
+  // const BASE_URL = "https://localhost:5000"
+
 
   const convertTime = (publicationDate) => {
     return new Date(publicationDate).toLocaleString();
