@@ -18,36 +18,59 @@ const UserProvider = (props) => {
         return;
       }
 
-      // var docRef = firebase.firestore().collection('users').doc(user.uid);
+      var docRef = firebase.firestore().collection('users').doc(user.uid);
 
-      // docRef.get().then((doc) => {
-      //     if (doc.exists) {
-      //         console.log("Document data:", doc.data());
-      //     } else {
-      //         // doc.data() will be undefined in this case
-      //         console.log("No such document!");
-      //     }
-      // }).catch((error) => {
-      //     console.log("Error getting document:", error);
-      // });
-
-    firebase.firestore().collection('users').doc(user.uid).set({
-      displayName: user.displayName,
-      email: user.email,
-      saved_articles: {}
-    })
-    .then(() => {
-      console.log("Document successfully written!");
-      const { displayName, email, uid } = user;
-      setUser({
-        name: displayName,
-        email: email,
-        id: uid,
+      docRef.get().then((doc) => {
+          if (doc.exists) {
+              console.log("Document data:", doc.data());
+              const { displayName, email, uid } = user;
+              setUser({
+                name: displayName,
+                email: email,
+                id: uid,
+              });
+          } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+              firebase.firestore().collection('users').doc(user.uid).set({
+                displayName: user.displayName,
+                email: user.email,
+                saved_articles: {}
+              })
+              .then(() => {
+                console.log("Document successfully written!");
+                const { displayName, email, uid } = user;
+                setUser({
+                  name: displayName,
+                  email: email,
+                  id: uid,
+                });
+              })
+              .catch((error) => {
+                console.log("Error writing document: ", error);
+              });
+          }
+      }).catch((error) => {
+          console.log("Error getting document:", error);
       });
-    })
-    .catch((error) => {
-      console.log("Error writing document: ", error);
-    });
+
+    // firebase.firestore().collection('users').doc(user.uid).set({
+    //   displayName: user.displayName,
+    //   email: user.email,
+    //   saved_articles: {}
+    // })
+    // .then(() => {
+    //   console.log("Document successfully written!");
+    //   const { displayName, email, uid } = user;
+    //   setUser({
+    //     name: displayName,
+    //     email: email,
+    //     id: uid,
+    //   });
+    // })
+    // .catch((error) => {
+    //   console.log("Error writing document: ", error);
+    // });
 
       // Here I can write to Firestore and read from it.
       // if they've logged in, generate document to the users collection 
