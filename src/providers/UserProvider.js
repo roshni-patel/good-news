@@ -12,6 +12,7 @@ const UserProvider = (props) => {
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
         setUser(null); //logout
+        // localStorage.clear();
         return;
       } else {
         var docRef = firebase.firestore().collection("users").doc(user.uid);
@@ -26,6 +27,7 @@ const UserProvider = (props) => {
                 email: email,
                 id: uid,
               });
+              // localStorage.setItem('user', user.uid)
             } else {
               // doc.data() will be undefined in this case
               console.log("No such document!");
@@ -46,6 +48,7 @@ const UserProvider = (props) => {
                     email: email,
                     id: uid,
                   });
+                  // localStorage.setItem('user', user.uid)
                 })
                 .catch((error) => {
                   console.log("Error writing document: ", error);

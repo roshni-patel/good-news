@@ -70,7 +70,7 @@ const Article = (props) => {
             <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
             { copied ?  <button className="btn btn-primary m-1">Copied!</button> : <button className="btn btn-primary m-1">Copy Link</button>}
             </CopyToClipboard>
-            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-1" openShareDialogOnClick={true} /></EmailShareButton>
+            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-1" /></EmailShareButton>
             <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-1"/></FacebookShareButton>
             <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
