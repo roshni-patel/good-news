@@ -19,6 +19,9 @@ const Nav = () => {
                     <li className="nav-item m-2">
                         <Link to="/" className="nav-links">Home</Link>
                     </li>
+                    <li className="nav-item m-2">
+                        <Link to="/about" className="nav-links">About</Link>
+                    </li>
                 { currentUser ?
                 <li className="nav-item m-2"> 
                     <Link to="/profile" className="nav-links">Profile</Link> 

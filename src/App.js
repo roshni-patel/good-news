@@ -10,6 +10,7 @@ import Login from './components/Login';
 import { UserContext } from "./providers/UserProvider";
 import ArticleList from './components/ArticleList';
 import Nav from './components/Nav';
+import About from './components/About';
 import 'firebaseui/dist/firebaseui.css'
 import SavedArticleList from './components/SavedArticleList';
 
@@ -36,6 +37,9 @@ function App() {
             </Route>
             <Route path="/profile">
               <Profile />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/saved">
               <SavedArticleList baseUrl={BASE_URL} user={currentUser} convertTime={convertTime}/>
