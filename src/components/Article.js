@@ -59,7 +59,7 @@ const Article = (props) => {
             <h5 className="card-title">{props.source_name}: {props.title}</h5>
             <p className="card-subtitle mb-2 text-muted">{props.source_name === 'Buzzfeed' ? null : props.author }</p>
             <p className="card-subtitle mb-2 text-muted">{props.convertTime(props.publication_date)}</p>
-            <p className="card-text">{props.description ? props.description : null }</p>
+            <p className="card-text">{props.description && props.source_name !== 'Buzzfeed' ? props.description : null }</p>
         </div>
         <div className="card-footer">
         <a href={props.article_url} target="_blank" rel="noopener noreferrer" className="btn btn-primary m-1">Read</a>

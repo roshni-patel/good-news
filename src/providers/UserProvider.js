@@ -21,6 +21,7 @@ const UserProvider = (props) => {
           .then((doc) => {
             if (doc.exists) {
               console.log("Document data:", doc.data());
+              // localStorage.getItem('user');
               const { displayName, email, uid } = user;
               setUser({
                 name: displayName,
@@ -49,6 +50,7 @@ const UserProvider = (props) => {
                     id: uid,
                   });
                   // localStorage.setItem('user', user.uid)
+                  // localStorage.setItem('user', JSON.stringify(user));
                 })
                 .catch((error) => {
                   console.log("Error writing document: ", error);

@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import SavedArticle from './SavedArticle';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { UserContext } from "../providers/UserProvider";
 import PropTypes from 'prop-types';
+import './SavedArticleList.css';
+
 
 
 const SavedArticleList = (props) => {
@@ -21,12 +23,10 @@ const SavedArticleList = (props) => {
             const apiArticles = response.data 
             console.log(apiArticles)
             setSavedArticles(apiArticles)
-            console.log("GOT THE ARTICLES")
         })
         .catch((error) => {
             setErrorMessage(error);
             console.log(errorMessage)
-            console.log("COULD NOT GET ARTICLES")
         })
     }, [reload])
 
@@ -45,6 +45,11 @@ const SavedArticleList = (props) => {
         return <Redirect to="/"/>
     }
 
+    // if (localStorage.getItem("user") === null || localStorage.getItem("user") === undefined ) {
+    //     return <Redirect to="/"/>
+    //     //...
+    // }
+
     const savedArticleComponents = savedArticles.map((savedArticle) => {
         return (
             <SavedArticle key={savedArticle.id}
@@ -58,7 +63,7 @@ const SavedArticleList = (props) => {
             sentiment={savedArticle.sentiment} 
             isSaved={true}
             articleId={savedArticle.id}
-            userId={props.user.id}
+            userId={props.user?.id}
             baseUrl={props.baseUrl}
             unsaveArticle={unsaveArticle} 
             convertTime={props.convertTime}
@@ -68,6 +73,7 @@ const SavedArticleList = (props) => {
 
     return (
     <div className="row">
+        {/* { savedArticleComponents.length === 0 ? <h4>You don't have anything saved! <Link to="/" className="redirect">View articles</Link></h4> : savedArticleComponents } */}
         {savedArticleComponents}
     </div>
     )
