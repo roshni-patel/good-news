@@ -8,7 +8,6 @@ import {
     FacebookShareButton,
     TwitterShareButton,
     WhatsappShareButton,
-    ViberShareButton,
     RedditShareButton
 } from "react-share";
 
@@ -17,7 +16,6 @@ import {
     FacebookIcon,
     TwitterIcon,
     WhatsappIcon,
-    ViberIcon,
     RedditIcon
 } from "react-share";
 import PropTypes from 'prop-types';
@@ -35,8 +33,10 @@ const Article = (props) => {
         axios.post(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
                 props.onSaveUpdated()
+                console.log("SAVED!")
         })
             .catch((error) => {
+            console.log(error)
             setErrorMessage(error)
         })
     };
@@ -74,7 +74,6 @@ const Article = (props) => {
             <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-1"/></FacebookShareButton>
             <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
             <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
-            <ViberShareButton url={props.article_url}><ViberIcon size={40} className="m-1"/></ViberShareButton>
             { !user ? <RedditShareButton url={props.article_url}><RedditIcon size={40} className="m-1"/></RedditShareButton> : null }
         </div>
         </div>

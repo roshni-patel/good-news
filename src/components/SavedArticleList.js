@@ -21,10 +21,12 @@ const SavedArticleList = (props) => {
             const apiArticles = response.data 
             console.log(apiArticles)
             setSavedArticles(apiArticles)
+            console.log("GOT THE ARTICLES")
         })
         .catch((error) => {
             setErrorMessage(error);
             console.log(errorMessage)
+            console.log("COULD NOT GET ARTICLES")
         })
     }, [reload])
 
