@@ -18,31 +18,37 @@ const UserProvider = (props) => {
         return;
       }
 
-    firebase.firestore().collection('users').doc(user.uid)
-    .set({
+    firebase.firestore().collection('users').doc(user.uid).set({
       displayName: user.displayName,
       email: user.email,
       saved_articles: {}
-  })
-  .then(() => {
-    console.log("Document successfully written!");
-})
-.catch((error) => {
-    console.log("Error writing document: ", error);
-});
-
-      // Here I can write to Firestore and read from it.
-      // if they've logged in, generate document to the users collection 
-      console.log('Returned user Object from Firebase', user);
-      //user.uid i added in uid here
+    })
+    .then(() => {
+      console.log("Document successfully written!");
       const { displayName, email, uid } = user;
       setUser({
         name: displayName,
         email: email,
         id: uid,
       });
+    })
+    .catch((error) => {
+      console.log("Error writing document: ", error);
     });
-  }, []);
+
+      // Here I can write to Firestore and read from it.
+      // if they've logged in, generate document to the users collection 
+      console.log('Returned user Object from Firebase', user);
+      //user.uid i added in uid here
+    //   const { displayName, email, uid } = user;
+    //   setUser({
+    //     name: displayName,
+    //     email: email,
+    //     id: uid,
+    //   });
+    // });
+  }, [])
+});
 
   // component providing context, value is the user state 
   // any component can just use context, they just have to be a child 
