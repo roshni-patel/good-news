@@ -1,100 +1,69 @@
-import React, { useState, useEffect, createContext } from 'react';
-import { auth } from '../services/firebase';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, createContext } from "react";
+import { auth } from "../services/firebase";
+import PropTypes from "prop-types";
 import firebase from "firebase/app";
 import "firebase/auth";
-import 'firebase/firestore';
+import "firebase/firestore";
 export const UserContext = createContext({ user: null });
-
 const UserProvider = (props) => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
-    // When the user logs in and out
+    // When the user loggs in and out
     auth.onAuthStateChanged(async (user) => {
-      console.log( `got to auth state changed with user ${user}`)
       if (!user) {
-        setUser(null) //logout
+        setUser(null); //logout
         return;
-      }
-
-      var docRef = firebase.firestore().collection('users').doc(user.uid);
-
-      docRef.get().then((doc) => {
-          if (doc.exists) {
+      } else {
+        var docRef = firebase.firestore().collection("users").doc(user.uid);
+        docRef
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
               console.log("Document data:", doc.data());
-              const { displayName, email, uid } = user;
-              setUser({
-                name: displayName,
-                email: email,
-                id: uid,
-              });
-          } else {
+            } else {
               // doc.data() will be undefined in this case
               console.log("No such document!");
-              firebase.firestore().collection('users').doc(user.uid).set({
-                displayName: user.displayName,
-                email: user.email,
-                saved_articles: {}
-              })
-              .then(() => {
-                console.log("Document successfully written!");
-                const { displayName, email, uid } = user;
-                setUser({
-                  name: displayName,
-                  email: email,
-                  id: uid,
-                });
-              })
-              .catch((error) => {
-                console.log("Error writing document: ", error);
-              });
-          }
-      }).catch((error) => {
-          console.log("Error getting document:", error);
-      });
-
-    // firebase.firestore().collection('users').doc(user.uid).set({
-    //   displayName: user.displayName,
-    //   email: user.email,
-    //   saved_articles: {}
-    // })
-    // .then(() => {
-    //   console.log("Document successfully written!");
-    //   const { displayName, email, uid } = user;
-    //   setUser({
-    //     name: displayName,
-    //     email: email,
-    //     id: uid,
-    //   });
-    // })
-    // .catch((error) => {
-    //   console.log("Error writing document: ", error);
-    // });
-
-      // Here I can write to Firestore and read from it.
-      // if they've logged in, generate document to the users collection 
-      console.log('Returned user Object from Firebase', user);
-      //user.uid i added in uid here
-    //   const { displayName, email, uid } = user;
-    //   setUser({
-    //     name: displayName,
-    //     email: email,
-    //     id: uid,
-    //   });
-    // });
-  }, [])
-});
-
-  // component providing context, value is the user state 
-  // any component can just use context, they just have to be a child 
+            }
+          })
+          .catch((error) => {
+            console.log("Error getting document:", error);
+          });
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .set({
+            displayName: user.displayName,
+            email: user.email,
+            saved_articles: {},
+          })
+          .then(() => {
+            console.log("Document successfully written!");
+            const { displayName, email, uid } = user;
+            setUser({
+              name: displayName,
+              email: email,
+              id: uid,
+            });
+          })
+          .catch((error) => {
+            console.log("Error writing document: ", error);
+          });
+        // Here I can write to Firestore and read from it.
+        // if they've logged in, generate document to the users collection
+        console.log("Returned user Object from Firebase", user);
+        // user.uid i added in uid here
+        const { displayName, email, uid } = user;
+        setUser({
+          name: displayName,
+          email: email,
+          id: uid,
+        });
+      }
+    });
+  }, []);
   return (
     <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
-  )
-}
-
-UserProvider.propTypes = {
-  children: PropTypes.node
-}
-
+  );
+};
 export default UserProvider;
