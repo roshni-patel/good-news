@@ -4,7 +4,6 @@ import axios from 'axios';
 import { UserContext } from "../providers/UserProvider";
 import PropTypes from 'prop-types';
 
-// import { Redirect } from 'react-router-dom';
 
 const ArticleList = (props) => {
     const [latestArticles, setLatestArticles] = useState([]);
@@ -15,9 +14,6 @@ const ArticleList = (props) => {
 
     const getSavedArticles = useCallback(() => {
         if (!user) { return; }
-        // if (!user) {
-        //     return <Redirect to="/"/>
-        // }
 
         axios.get(`${props.baseUrl}/users/${user.id}/articles`)
         .then((response) => {
@@ -60,6 +56,7 @@ const ArticleList = (props) => {
         }
         return false; 
     }
+
 
     const articleComponents = latestArticles.map((article) => {
         return (
