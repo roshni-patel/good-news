@@ -12,8 +12,9 @@ const SavedArticleList = (props) => {
     const [savedArticles, setSavedArticles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [reload, setReload] = useState(0);
+    const [savedLoaded, setSavedLoaded] = useState(false);
     const user = useContext(UserContext)
-    console.log(user)
+    // console.log(user)
 
 
     useEffect(() => {
@@ -23,6 +24,7 @@ const SavedArticleList = (props) => {
             const apiArticles = response.data 
             console.log(apiArticles)
             setSavedArticles(apiArticles)
+            setSavedLoaded(true);
         })
         .catch((error) => {
             setErrorMessage(error);
@@ -45,11 +47,6 @@ const SavedArticleList = (props) => {
         return <Redirect to="/"/>
     }
 
-    // if (localStorage.getItem("user") === null || localStorage.getItem("user") === undefined ) {
-    //     return <Redirect to="/"/>
-    //     //...
-    // }
-
     const savedArticleComponents = savedArticles.map((savedArticle) => {
         return (
             <SavedArticle key={savedArticle.id}
@@ -71,10 +68,10 @@ const SavedArticleList = (props) => {
         )
     })
 
+
     return (
     <div className="row">
-        {/* { savedArticleComponents.length === 0 ? <h4>You don't have anything saved! <Link to="/" className="redirect">View articles</Link></h4> : savedArticleComponents } */}
-        {savedArticleComponents}
+        { savedArticleComponents.length === 0 && savedLoaded ? <h4>You don't have anything saved! <Link to="/" className="redirect">View articles</Link></h4> : savedArticleComponents }
     </div>
     )
 }
