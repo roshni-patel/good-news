@@ -11,7 +11,7 @@ const About = () => {
             consuming too much of these kinds of news stories without hearing about some of the good that is still happening in our world despite
             the situation we are in can be exhausting or even harmful for our mental health. Good News aims to supplement the news we see on a regular basis
             by providing a few new positive articles every day. The inspiration for this website comes from <a href="https://youtube.com/playlist?list=PL_7yEns96WJN5JtKJIL7Kw2_HUuiTjPdq" target="_blank" rel="noopener noreferrer">John Krasinski's Some Good News series on YouTube</a>,
-            in which he hosted a weekly news show sharing positive news stories from around the world when the COVID-19 pandemic first began.
+            a weekly news show that shared positive news stories when the COVID-19 pandemic first began.
             </p>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/6DLU4Gih0gY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             

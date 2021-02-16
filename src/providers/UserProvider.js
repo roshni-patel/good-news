@@ -4,15 +4,23 @@ import PropTypes from "prop-types";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+
+const localUser = () => {
+  const userJSON = localStorage.getItem("user")
+  if (userJSON) {
+    return JSON.parse(userJSON)
+  } 
+  return null 
+}
 export const UserContext = createContext({ user: null });
 const UserProvider = (props) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(localUser());
   useEffect(() => {
-    // When the user loggs in and out
+    // When the user logs in and out
     auth.onAuthStateChanged(async (user) => {
       if (!user) {
         setUser(null); //logout
-        // localStorage.clear();
+        localStorage.clear();
         return;
       } else {
         var docRef = firebase.firestore().collection("users").doc(user.uid);
@@ -21,14 +29,14 @@ const UserProvider = (props) => {
           .then((doc) => {
             if (doc.exists) {
               console.log("Document data:", doc.data());
-              // localStorage.getItem('user');
               const { displayName, email, uid } = user;
-              setUser({
+              const newUser = {
                 name: displayName,
                 email: email,
                 id: uid,
-              });
-              // localStorage.setItem('user', user.uid)
+              }
+              setUser(newUser);
+              localStorage.setItem("user", JSON.stringify(newUser));
             } else {
               // doc.data() will be undefined in this case
               console.log("No such document!");
@@ -44,13 +52,13 @@ const UserProvider = (props) => {
                 .then(() => {
                   console.log("Document successfully written!");
                   const { displayName, email, uid } = user;
-                  setUser({
+                  const newUser = {
                     name: displayName,
                     email: email,
                     id: uid,
-                  });
-                  // localStorage.setItem('user', user.uid)
-                  // localStorage.setItem('user', JSON.stringify(user));
+                  }
+                  setUser(newUser);
+                  localStorage.setItem("user", JSON.stringify(newUser));
                 })
                 .catch((error) => {
                   console.log("Error writing document: ", error);
@@ -64,7 +72,6 @@ const UserProvider = (props) => {
         // Here I can write to Firestore and read from it.
         // if they've logged in, generate document to the users collection
         console.log("Returned user Object from Firebase", user);
-        // user.uid i added in uid here
       }
     });
   }, []);
