@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import {UserContext} from "../providers/UserProvider";
 import './Profile.css';
 
-
 const Profile = () => {
     const user = useContext(UserContext)
 
