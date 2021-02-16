@@ -33,7 +33,6 @@ const Article = (props) => {
         axios.post(`${props.baseUrl}/users/${userId}/articles/${articleId}`)
             .then((response) => {
                 props.onSaveUpdated()
-                console.log("SAVED!")
         })
             .catch((error) => {
             console.log(error)
@@ -70,10 +69,10 @@ const Article = (props) => {
             <CopyToClipboard text={props.article_url} onCopy={() => setCopied(true)}>
             { copied ?  <button className="btn btn-primary m-1">Copied!</button> : <button className="btn btn-primary m-1">Copy Link</button>}
             </CopyToClipboard>
-            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-1" /></EmailShareButton>
-            <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-1"/></FacebookShareButton>
-            <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-1"/></TwitterShareButton>
-            <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-1"/></WhatsappShareButton>
+            <EmailShareButton url={props.article_url}><EmailIcon size={40} className="m-2" /></EmailShareButton>
+            <FacebookShareButton url={props.article_url} quote={props.title}><FacebookIcon size={40} className="m-2"/></FacebookShareButton>
+            <TwitterShareButton url={props.article_url}><TwitterIcon size={40} className="m-2"/></TwitterShareButton>
+            <WhatsappShareButton url={props.article_url}><WhatsappIcon size={40} className="m-2"/></WhatsappShareButton>
             { !user ? <RedditShareButton url={props.article_url}><RedditIcon size={40} className="m-1"/></RedditShareButton> : null }
         </div>
         </div>

@@ -1,12 +1,14 @@
-a, a:hover {
+/* a, a:hover {
     color: white;
     text-decoration: none;
-}
+} */
 
-.nav-links:hover {
+.nav-links:hover, .nav-links {
     color: white; 
+    text-decoration: none;
 }
 
 .saved, a:hover {
     color: black;
+    text-decoration: none;
 }
