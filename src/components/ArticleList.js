@@ -3,6 +3,7 @@ import Article from './Article';
 import axios from 'axios';
 import { UserContext } from "../providers/UserProvider";
 import PropTypes from 'prop-types';
+import ScrollUpButton from "react-scroll-up-button"; 
 
 
 const ArticleList = (props) => {
@@ -83,6 +84,7 @@ const ArticleList = (props) => {
     return (
         <div className="row">
             {articleComponents}
+            <ScrollUpButton />
         </div>
         )
 }
