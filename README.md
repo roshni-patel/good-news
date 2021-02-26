@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Good News 
+## Checking out the website
+If you would simply like to use the website, please visit https://good-news-6d972.firebaseapp.com/. Note that it does initially take a few seconds to load due to being on the free tier for Heroku. For instructions on how to set up the project on your machine, please keep reading. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setting up the backend
+Before moving on to the next steps, please set up the backend first. The backend is responsible for retrieving the news articles and analyzing sentiment as well as managing users and storing information such as which articles they have saved. You can find the link to the backend repository here: https://github.com/roshni-patel/good-news-api.
 
-## Available Scripts
+## Getting the code
 
-In the project directory, you can run:
+```shell=bash
+# Clone the code
+git clone https://github.com/roshni-patel/good-news.git 
 
-### `yarn start`
+# Go into the code folder
+cd good-news
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Install the dependencies 
+npm install
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Creating an env file
+Create an `.env` file in the `good-news` folder that looks like this: 
+```shell=sh
+REACT_APP_API_KEY="Insert firebase app API key here"
+REACT_APP_AUTH_DOMAIN="Insert firebase app auth domain here "
+REACT_APP_PROJECT_ID="Insert firebase app project ID here"
+REACT_APP_STORAGE_BUCKET="Insert firebase app storage bucket here"
+REACT_APP_MESSAGING_SENDER_ID="Insert firebase app messenging sender id here"
+REACT_APP_APP_ID="Insert firebase app app ID here"
+```
 
-### `yarn test`
+## Running Locally
+1. In `App.js` change the Heroku base url to http://localhost:5000. Make sure that you've followed the steps to setup the backend first — see instructions at https://github.com/roshni-patel/good-news-api.
+3. Start the server with `yarn start` and the app should be loaded on http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deploying on Firebase
+1. Click on the **Hosting** tab from the Firebase console and click on **Get Started**. 
+2. Follow the instructions to deploy to Firebase Hosting. You can find documentation on Firebase Hosting here: https://firebase.google.com/docs/hosting
