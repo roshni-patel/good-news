@@ -10,6 +10,7 @@ const ArticleList = (props) => {
     const [latestArticles, setLatestArticles] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
     const [savedArticles, setSavedArticles] = useState([]); 
+    const [articlesLoaded, setArticlesLoaded] = useState(false); 
     const user = useContext(UserContext)
     console.log(user)
 
@@ -34,6 +35,7 @@ const ArticleList = (props) => {
             const apiArticles = response.data 
             // console.log(apiArticles)
             setLatestArticles(apiArticles)
+            setArticlesLoaded(true);
         })
         .catch((error) => {
             setErrorMessage(error);
@@ -83,7 +85,9 @@ const ArticleList = (props) => {
 
     return (
         <div className="row">
-            {articleComponents}
+            { articlesLoaded ? articleComponents : <div className="text-center"><strong>Loading...</strong>
+<div className="spinner-border text-secondary" role="status"><span className="sr-only">Loading...</span></div></div>}
+            {/* {articleComponents} */}
             <ScrollUpButton />
         </div>
         )

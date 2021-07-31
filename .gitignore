@@ -25,3 +25,5 @@ yarn-error.log*
 yarn.lock
 .env
 firebase-debug.log
+.firebase/hosting.YnVpbGQ.cache
+.firebaserc
